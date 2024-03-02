@@ -18,22 +18,26 @@ bool parseCircle(char* buff,Circle* circle)
     static int n = 0;
     int args=sscanf(buff,"%[^(](%f %f, %f)",circle->name,&circle->x,&circle->y,&circle->r)-1;
     circle->number = ++n;
+    for (int i = 0; circle->name[i]; i++) 
+    {
+        circle->name[i] = tolower(circle->name[i]);
+    }
     if (args<1)
     {
         printf("Error: figure doesn't read\n\n");
         return NULL;
     }
-    if (circle->r<0)
+    else if (circle->r<0)
     {
         printf("Error: incorrect radius\n\n");
         return NULL;
     }
-    if (args!=3)
+    else if (args!=3)
     {
         printf("Error: count of args must be 3\n\n");
         return NULL;
     }
-    if (strcmp(circle->name,"circle")!=0)
+    else if (strcmp(circle->name,"circle")!=0)
     {
         printf("Error: expected 'circle'\n\n");
         return NULL;
