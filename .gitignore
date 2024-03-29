@@ -1,2 +1,4 @@
-*.exe
-*.txt
+*.a
+*.d
+*.o
+bin/geometry
