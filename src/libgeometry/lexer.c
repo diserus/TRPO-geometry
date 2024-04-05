@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-
 #include <libgeometry/lexer.h>
 
 void remove_extra_spaces(char* str)
@@ -59,7 +55,7 @@ void check_near_brackets(char* str)
                         exit(EXIT_FAILURE);
                     }
                 } else if (str[j] == '-') {
-                    if (!isdigit(str[j + 1])) {
+                    if (!isdigit(str[j + 1]) || (isdigit(str[j - 1]) && isdigit(str[j + 1]))) {
                         printf("Error: unexpected '-'");
                         exit(EXIT_FAILURE);
                     }
