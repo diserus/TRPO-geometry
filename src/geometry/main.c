@@ -1,16 +1,13 @@
-#include <stdio.h>
-
 #include <libgeometry/parser.h>
 int main()
 {
-    FILE *file = NULL;
-    file = fopen("main.txt","r");
-    if (file == NULL)
-    {
+    FILE* file = NULL;
+    file = fopen("main.txt", "r");
+    if (file == NULL) {
         printf("The file doesn't open\n");
         return 1;
-    }
-    else 
+    } else
+
     {
         parser(file);
         fclose(file);

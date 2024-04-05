@@ -1,6 +1,3 @@
-#include <math.h>
-#include <stdio.h>
-
 #include <libgeometry/calculate.h>
 
 double calc_perimetr_circle(Circle* circle)

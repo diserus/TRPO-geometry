@@ -70,6 +70,11 @@ void check_near_brackets(char* str)
             printf("Error: unexpected ','");
             exit(EXIT_FAILURE);
         }
+        if (count_char(str, ',') == 0)
+        {
+            printf("Error: expected ','");
+            exit(EXIT_FAILURE);
+        }
         if (count_char(str, ' ') != 2) {
             printf("Error: not enought arguments");
             exit(EXIT_FAILURE);
@@ -78,6 +83,11 @@ void check_near_brackets(char* str)
     } else if (count_char(str, '(') == 2) {
         if (count_char(str, ',') > 3) {
             printf("Error: unexpected ','");
+            exit(EXIT_FAILURE);
+        }
+        if (count_char(str, ',') == 0 || count_char(str, ',') == 1 || count_char(str, ',') == 2)
+        {
+            printf("Error: expected ','");
             exit(EXIT_FAILURE);
         }
         if (count_char(str, ' ') != 7) {

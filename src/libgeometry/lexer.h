@@ -1,4 +1,8 @@
 #pragma once
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 void remove_extra_spaces(char* str);
 void to_lower_string(char* string);
