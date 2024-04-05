@@ -24,3 +24,5 @@ checkstyle:
 build:
   stage: build
   extends: .build-script
+
+#git ls-files *.{c,h} | xargs clang-format -i --verbose && git diff --exit-code
