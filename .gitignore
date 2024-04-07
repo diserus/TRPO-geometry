@@ -2,4 +2,5 @@
 *.a
 *.d
 *.o
-bin/geometry
+bin/geometry.exe
+main_test.exe
