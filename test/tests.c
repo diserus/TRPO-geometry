@@ -47,3 +47,38 @@ CTEST(lexer, str_clear)
     str_clear(string, strlen(string));
     ASSERT_STR(expected, string);
 }
+
+CTEST(calculate, calc_area_circle)
+{
+    Circle circle = {.radius = 2};
+    double expected = 12.566;
+    double result = calc_area_circle(&circle);
+    double tol = 1e-3;
+    ASSERT_DBL_NEAR_TOL(expected, result, tol);
+}
+
+CTEST(calculate, calc_perimetr_circle)
+{
+    Circle circle = {.radius = 2.5};
+    double expected = 15.707;
+    double result = calc_perimetr_circle(&circle);
+    double tol = 1e-3;
+    ASSERT_DBL_NEAR_TOL(expected, result, tol);
+}
+
+CTEST(calculate, calc_area_triangle)
+{
+    Triangle triangle = {{1, 5}, {7, 6}, {1, 2}, {1, 5}};
+    double expected = 9;
+    double result = calc_area_triangle(&triangle);
+    ASSERT_DBL_NEAR(expected, result);
+}
+
+CTEST(calculate, calc_perimetr_triangle)
+{
+    Triangle triangle = {{1, 5}, {7, 6}, {1, 2}, {1, 5}};
+    double expected = 16.29;
+    double result = calc_perimetr_triangle(&triangle);
+    double tol = 1e-2;
+    ASSERT_DBL_NEAR_TOL(expected, result, tol);
+}
