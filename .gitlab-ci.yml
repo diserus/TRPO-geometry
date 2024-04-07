@@ -16,6 +16,7 @@ default:
 stages:
   - check-codestyle
   - build
+  - test
 
 checkstyle:
   stage: check-codestyle
@@ -25,4 +26,8 @@ build:
   stage: build
   extends: .build-script
 
-#git ls-files *.{c,h} | xargs clang-format -i --verbose && git diff --exit-code
+test:
+  script:
+    - echo "START TESTS"
+    - make run-test
+    - echo "FINISH TESTS"
