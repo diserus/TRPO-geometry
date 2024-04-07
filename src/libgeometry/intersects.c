@@ -1,7 +1,7 @@
 #include <math.h>
 
-#include <libgeometry/parser.h>
 #include <libgeometry/intersects.h>
+#include <libgeometry/parser.h>
 
 double distance(Circle a, Circle b)
 {

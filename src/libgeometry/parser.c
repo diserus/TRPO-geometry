@@ -1,7 +1,7 @@
 #include <libgeometry/calculate.h>
+#include <libgeometry/intersects.h>
 #include <libgeometry/lexer.h>
 #include <libgeometry/parser.h>
-#include <libgeometry/intersects.h>
 
 Circle parse_circle(char* geomName, int number, char* buff)
 {
@@ -76,7 +76,8 @@ void print_triangle_info(Triangle* triangle)
     printf("\tperimeter = %.3f\n", triangle->perimeter);
 }
 
-void print_itersect_circles(Circle* circle, Circle circles[], int circles_cnt, int j)
+void print_itersect_circles(
+        Circle* circle, Circle circles[], int circles_cnt, int j)
 {
     for (int i = 0; i < circles_cnt; i++) {
         if (j == i)
@@ -86,7 +87,8 @@ void print_itersect_circles(Circle* circle, Circle circles[], int circles_cnt, i
     }
 }
 
-void print_itersect_circle_tr(Circle* circle, Triangle triangles[], int triangle_cnt)
+void print_itersect_circle_tr(
+        Circle* circle, Triangle triangles[], int triangle_cnt)
 {
     for (int i = 0; i < triangle_cnt; i++) {
         if (is_intersect_circle_triangle(*circle, triangles[i]))
@@ -94,7 +96,8 @@ void print_itersect_circle_tr(Circle* circle, Triangle triangles[], int triangle
     }
 }
 
-void print_itersect_triangles(Triangle* triangle, Triangle triangles[], int triangle_cnt, int j)
+void print_itersect_triangles(
+        Triangle* triangle, Triangle triangles[], int triangle_cnt, int j)
 {
     for (int i = 0; i < triangle_cnt; i++) {
         if (i == j)
@@ -104,7 +107,8 @@ void print_itersect_triangles(Triangle* triangle, Triangle triangles[], int tria
     }
 }
 
-void print_intersect_tr_circle(Triangle* triangle, Circle circles[], int circles_cnt)
+void print_intersect_tr_circle(
+        Triangle* triangle, Circle circles[], int circles_cnt)
 {
     for (int i = 0; i < circles_cnt; i++) {
         if (is_intersect_circle_triangle(circles[i], *triangle))
@@ -126,7 +130,7 @@ void print_geometry(
             print_circle_info(&circles[c]);
             printf("\tintersects:\n");
             print_itersect_circles(&circles[c], circles, circles_cnt, c);
-            print_itersect_circle_tr(&circles[c],triangles, triangle_cnt);
+            print_itersect_circle_tr(&circles[c], triangles, triangle_cnt);
             printf("\n");
             c++;
         } else if (queue[i] == 2) {

@@ -55,7 +55,8 @@ void check_near_brackets(char* str)
                         exit(EXIT_FAILURE);
                     }
                 } else if (str[j] == '-') {
-                    if (!isdigit(str[j + 1]) || (isdigit(str[j - 1]) && isdigit(str[j + 1]))) {
+                    if (!isdigit(str[j + 1])
+                        || (isdigit(str[j - 1]) && isdigit(str[j + 1]))) {
                         printf("Error: unexpected '-'");
                         exit(EXIT_FAILURE);
                     }
@@ -70,8 +71,7 @@ void check_near_brackets(char* str)
             printf("Error: unexpected ','");
             exit(EXIT_FAILURE);
         }
-        if (count_char(str, ',') == 0)
-        {
+        if (count_char(str, ',') == 0) {
             printf("Error: expected ','");
             exit(EXIT_FAILURE);
         }
@@ -85,8 +85,8 @@ void check_near_brackets(char* str)
             printf("Error: unexpected ','");
             exit(EXIT_FAILURE);
         }
-        if (count_char(str, ',') == 0 || count_char(str, ',') == 1 || count_char(str, ',') == 2)
-        {
+        if (count_char(str, ',') == 0 || count_char(str, ',') == 1
+            || count_char(str, ',') == 2) {
             printf("Error: expected ','");
             exit(EXIT_FAILURE);
         }
