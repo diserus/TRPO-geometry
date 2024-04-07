@@ -82,3 +82,33 @@ CTEST(calculate, calc_perimetr_triangle)
     double tol = 1e-2;
     ASSERT_DBL_NEAR_TOL(expected, result, tol);
 }
+
+CTEST(parser, parse_circle)
+{
+    char string[] = "circle(1 5, 6)";
+    Circle expected_circle;
+    expected_circle.point.x = 1;
+    expected_circle.point.y = 5;
+    expected_circle.radius = 6;
+    char name[] = "circle";
+    Circle result_circle = parse_circle(name, 1, string);
+    ASSERT_DBL_NEAR(expected_circle.point.x, result_circle.point.x);
+    ASSERT_DBL_NEAR(expected_circle.point.y, result_circle.point.y);
+    ASSERT_DBL_NEAR(expected_circle.radius, result_circle.radius);
+}
+
+CTEST(parser, parse_triangle)
+{
+    char string[] = "triangle((1 2, 3 4, 0 2, 1 2))";
+    Triangle expected_triangle = {{1, 2}, {3, 4}, {0, 2}, {1, 2}};
+    char name[] = "triangle";
+    Triangle result_triangle = parse_triangle(name, 1, string);
+    ASSERT_DBL_NEAR(expected_triangle.point1.x, result_triangle.point1.x);
+    ASSERT_DBL_NEAR(expected_triangle.point1.y, result_triangle.point1.y);
+    ASSERT_DBL_NEAR(expected_triangle.point2.x, result_triangle.point2.x);
+    ASSERT_DBL_NEAR(expected_triangle.point2.y, result_triangle.point2.y);
+    ASSERT_DBL_NEAR(expected_triangle.point3.x, result_triangle.point3.x);
+    ASSERT_DBL_NEAR(expected_triangle.point3.y, result_triangle.point3.y);
+    ASSERT_DBL_NEAR(expected_triangle.point4.x, result_triangle.point4.x);
+    ASSERT_DBL_NEAR(expected_triangle.point4.y, result_triangle.point4.y);
+}
