@@ -42,6 +42,14 @@ Circle parse_circle(char* geomName, int number, char* buff);
 Triangle parse_triangle(char* geomName, int number, char* buff);
 void print_circle_info(Circle* circle);
 void print_triangle_info(Triangle* trinagle);
+void print_itersect_circles(
+        Circle* circle, Circle circles[], int circles_cnt, int j);
+void print_itersect_circle_tr(
+        Circle* circle, Triangle triangles[], int triangle_cnt);
+void print_itersect_triangles(
+        Triangle* triangle, Triangle triangles[], int triangle_cnt, int j);
+void print_intersect_tr_circle(
+        Triangle* triangle, Circle circles[], int circles_cnt);
 void print_geometry(
         Circle circles[],
         int circles_cnt,
