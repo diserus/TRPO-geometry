@@ -112,3 +112,96 @@ CTEST(parser, parse_triangle)
     ASSERT_DBL_NEAR(expected_triangle.point4.x, result_triangle.point4.x);
     ASSERT_DBL_NEAR(expected_triangle.point4.y, result_triangle.point4.y);
 }
+
+CTEST(intersect, circles)
+{
+    Circle a = {{2, 3}, .radius = 1};
+    Circle b = {{0, 0}, .radius = 1};
+
+    bool result = is_intersect_circles(a, b);
+    bool expect = 0;
+    ASSERT_EQUAL(expect, result);
+
+    Circle x = {{0, 0}, .radius = 1};
+    Circle y = {{0, 0}, .radius = 1};
+
+    result = is_intersect_circles(x, y);
+    expect = 1;
+    ASSERT_EQUAL(expect, result);
+
+    Circle k = {{1, 2}, .radius = 1};
+    Circle m = {{0, 0}, .radius = 5};
+
+    result = is_intersect_circles(k, m);
+    expect = 1;
+    ASSERT_EQUAL(expect, result);
+}
+
+CTEST(intersect, triangles)
+{
+    Triangle a
+            = {.point1 = {1, 1},
+               .point2 = {2, 4},
+               .point3 = {3, 3},
+               .point4 = {1, 1}};
+    Triangle b
+            = {.point1 = {2, 3},
+               .point2 = {4, 5},
+               .point3 = {4, 2},
+               .point4 = {2, 3}};
+
+    bool result = is_intersect_triangles(a, b);
+    bool expect = 1;
+    ASSERT_EQUAL(expect, result);
+
+    Triangle x
+            = {.point1 = {-3, -2},
+               .point2 = {-1, 0},
+               .point3 = {-3, 2},
+               .point4 = {-3, -2}};
+    Triangle y
+            = {.point1 = {3, -2},
+               .point2 = {-1, 0},
+               .point3 = {-3, 2},
+               .point4 = {3, -2}};
+
+    result = is_intersect_triangles(x, y);
+    expect = 0;
+    ASSERT_EQUAL(expect, result);
+}
+
+CTEST(intersect, circle_and_triangle)
+{
+    Circle circle = {.point = {0, 0}, .radius = 1.5};
+    Triangle t
+            = {.point1 = {-3, -2},
+               .point2 = {-1, 0},
+               .point3 = {-3, 2},
+               .point4 = {-3, -2}};
+
+    bool result = is_intersect_circle_triangle(circle, t);
+    bool expect = 1;
+    ASSERT_EQUAL(expect, result);
+
+    Circle circle1 = {.point = {0, 0}, .radius = 1.5};
+    Triangle t1
+            = {.point1 = {3, -2},
+               .point2 = {3, 2},
+               .point3 = {1, 0},
+               .point4 = {3, -2}};
+
+    result = is_intersect_circle_triangle(circle1, t1);
+    expect = 1;
+    ASSERT_EQUAL(expect, result);
+
+    Circle circle2 = {.point = {0, 0}, .radius = 1.5};
+    Triangle t2
+            = {.point1 = {3, -2},
+               .point2 = {3, 2},
+               .point3 = {2, 0},
+               .point4 = {3, -2}};
+
+    result = is_intersect_circle_triangle(circle2, t2);
+    expect = 0;
+    ASSERT_EQUAL(expect, result);
+}
