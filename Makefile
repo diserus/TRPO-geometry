@@ -62,7 +62,8 @@ $(OBJ_DIR)/test/tests.o: test/tests.c
 # RUN
 run: all
 	$(APP_PATH) $(BIN_DIR)/test.txt
-
+run-test : all
+	$(TARGET_PATH)$(TEST_TARGET)
 # CLEAN
 clean:
 	$(RM) $(APP_PATH) $(TEST_PATH) $(OBJ_DIR)/*/*/*.[aod] $(OBJ_DIR)/test/*.[aod]
